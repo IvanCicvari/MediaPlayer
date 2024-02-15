@@ -6,6 +6,7 @@
 *{
   margin: 0;
   padding: 0;
+  font-family: 'Times New Roman', Times, serif;
 }
 
 /* Header css */
@@ -141,4 +142,93 @@
 
 .filter-button:hover {
   background-color: #ff3333; /* Change color on hover */
+}
+
+/* VideoPage */
+.video-container {
+  max-width: 800px; /* Adjust the max-width as needed */
+  margin: 0 auto;
+  padding: 20px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.video {
+  width: 100%;
+  height: auto;
+}
+
+.video-title {
+  font-size: 24px;
+  margin-top: 10px;
+}
+
+.video-author {
+  font-style: italic;
+  color: #555;
+  margin-top: 5px;
+}
+
+.video-description {
+  margin-top: 10px;
+}
+
+.video-views,
+.video-time-posted {
+  display: inline-block;
+  margin-right: 20px;
+}
+
+.video-category {
+  font-weight: bold;
+  margin-top: 10px;
+}
+/* Main container for comments */
+.comments {
+  margin-top: 20px;
+  padding: 20px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #f9f9f9;
+}
+
+/* Style for individual comment */
+.comment {
+  margin-bottom: 15px;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  background-color: #fff;
+}
+
+/* Style for comment author and timestamp */
+.comment-info {
+  font-size: 12px;
+  color: #888;
+}
+
+/* Style for comment text */
+.comment-text {
+  margin-top: 8px;
+  font-size: 14px;
+}
+
+/* Style for update and delete buttons */
+.comment-buttons {
+  margin-top: 8px;
+  display: flex;
+  justify-content: end;
+}
+
+/* Style for individual button */
+.comment-buttons button {
+  padding: 8px;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+/* Style for buttons on hover */
+.comment-buttons button:hover {
+  background-color: #007bff;
+  color: #fff;
 }
