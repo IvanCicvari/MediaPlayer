@@ -17,6 +17,7 @@
   align-items: center;
   height: 50px;
 }
+
 .nav-item-afther-search {
   width: 200px;
   display: flex;
@@ -199,7 +200,14 @@
   border-radius: 4px;
   background-color: #fff;
 }
-
+.comments-new-comments {
+  width: 100%; /* Adjust the width as needed */
+  padding: 10px; /* Adjust padding as needed */
+  box-sizing: border-box; /* Include padding and border in the element's total width and height */
+  border: 1px solid #ddd; /* Border color */
+  border-radius: 4px; /* Border radius for rounded corners */
+  margin-bottom: 15px; /* Adjust margin as needed */
+}
 /* Style for comment author and timestamp */
 .comment-info {
   font-size: 12px;

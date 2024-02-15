@@ -48,14 +48,18 @@ const Comments = () => {
   return (
     <div className='comments'>
       {/* Form for adding new comments */}
-      <form onSubmit={handleAddComment}>
-        <textarea
-          value={newComment}
-          onChange={(e) => setNewComment(e.target.value)}
-          placeholder='Add a comment...'
-        />
-        <button type='submit'>Add Comment</button>
-      </form>
+      <form onSubmit={handleAddComment} className='comments-form'>
+  <div className='comments-input-container'>
+    <textarea
+      className='comments-new-comments'
+      value={newComment}
+      onChange={(e) => setNewComment(e.target.value)}
+      placeholder='Add a comment...'
+    />
+    <button type='submit'>Add Comment</button>
+  </div>
+</form>
+
 
       {/* Iterate over comments and display each one */}
       {comments.map((comment) => (
