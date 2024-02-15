@@ -1,8 +1,11 @@
 import React, { useState } from 'react';
+import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
+
 import Header from './Components/Header';
 import Card from './Components/card';
 import './style/MainCssFile.css'; // Correct path to the CSS file
 import Filter from './Components/filter';
+import VideoPage from './Components/VideoPage';
 
 
 
@@ -62,16 +65,22 @@ const App = () => {
     }
   }
   return (
-    <div>
+    <Router>
       <Header title="Media Player app" onSearch={handleSearch} buttons={buttons} />
       <Filter filters={filters} onSelectFilter={handleFilterChange} />
-      <div className="card-container">
-        {filteredCards.map((card, index) => (
-          <Card key={index} {...card} />
-        ))}
-      </div>
-    </div>
+      <Routes>
+        <Route path="/video/:title" element={<VideoPage cards={cards} />} />
+        <Route path="/" element={<div className="card-container">
+          {filteredCards && filteredCards.map((card, index) => (
+            <Link to={`/video/${encodeURIComponent(card.title)}`} key={index}>
+              <Card {...card} />
+            </Link>
+          ))}
+        </div>} />
+      </Routes>
+    </Router>
   );
-}
+};
+
 
 export default App;
