@@ -1,11 +1,12 @@
 import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, Routes, Link } from 'react-router-dom';
 
-import Header from './Components/Header';
+import Header from './Components/Header/Header';
 import Card from './Components/card';
 import './style/MainCssFile.css'; // Correct path to the CSS file
 import Filter from './Components/filter';
 import VideoPage from './Components/VideoPage';
+import Sidebar from './Components/Header/SideBar';
 
 
 
@@ -16,9 +17,7 @@ const buttons = [
   <button key="Notification" className="nav-item" onClick={() => console.log('Notification clicked!')}>
     <i className="fas fa-bell"></i> {/* Font Awesome bell icon */}
   </button>,
-  <button key="profile" className="nav-item" onClick={() => console.log('Profile clicked!')}>
-    <i className="fas fa-user"></i> {/* Font Awesome user icon */}
-  </button>,
+
 ];
 
 // Array of cards with sample data
@@ -85,31 +84,36 @@ const cards = generateRandomCards();
   }, [selectedCard]);
   return (
     <Router>
-      <Header title="Media Player app" onSearch={handleSearch} buttons={buttons} />
-      <Filter filters={filters} onSelectFilter={handleFilterChange} />
-      <Routes>
-        <Route
-          path="/video/:title"
-          element={<VideoPage selectedCard={selectedCard} />}
-        />
-        <Route
-          path="/"
-          element={
-            <div className="card-container">
-              {filteredCards &&
-                filteredCards.map((card, index) => (
-                  <Link
-                    to={`/video/${encodeURIComponent(card.author)}`}
-                    key={index}
-                    onClick={() => handleCardClick(card)}
-                  >
-                    <Card {...card} />
-                  </Link>
-                ))}
-            </div>
-          }
-        />
-      </Routes>
+      <div className="app">
+        <Sidebar />
+        <div className="main-content">
+          <Header title="Media Player app" onSearch={handleSearch} buttons={buttons} />
+          <Filter filters={filters} onSelectFilter={handleFilterChange} />
+          <Routes>
+            <Route
+              path="/video/:title"
+              element={<VideoPage selectedCard={selectedCard} />}
+            />
+            <Route
+              path="/"
+              element={
+                <div className="card-container">
+                  {filteredCards &&
+                    filteredCards.map((card, index) => (
+                      <Link
+                        to={`/video/${encodeURIComponent(card.author)}`}
+                        key={index}
+                        onClick={() => handleCardClick(card)}
+                      >
+                        <Card {...card} />
+                      </Link>
+                    ))}
+                </div>
+              }
+            />
+          </Routes>
+        </div>
+      </div>
     </Router>
   );
 };

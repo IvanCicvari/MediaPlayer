@@ -1,92 +1,21 @@
-:root {
-  --yt-red: #ff0000;
-  --yt-almost-black: #282828;
-  --yt-white: #ffffff;
-}
 *{
   margin: 0;
   padding: 0;
-  font-family: 'Times New Roman', Times, serif;
 }
-
-/* Header css */
-.nav {
-  background-color: var(--yt-almost-black);
+.app {
   display: flex;
-  justify-content: center;
-  align-items: center;
-  height: 50px;
+  height: 100vh;
 }
 
-.nav-item-afther-search {
-  width: 200px;
-  display: flex;
-  background-color: black;
-  justify-content: space-evenly;
-  align-items: center;
-  position: absolute;
-  right: 0; /* Move to the full right of the page */
-  height: 0; /* Take full height of the navigation bar */
-}
-.nav-item {
-  background-color: var(--yt-red);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-}
-
-.nav-search {
-  width: 500px; /* Adjust width as needed */
-  height:35px;
-  align-items: center;
-  justify-content: center;
-  display: flex; /* Ensure the items are displayed in a flex container */
-  border: solid black 1px;
-
-}
-.search-button {
-  /* Add styles to make the button look like the letter "D" */
-  width: 65px; /* Adjust the width as needed */
-  height:40px; /* Adjust the height as needed */
-  border: none;
-  background-color: var(--yt-red); /* Use your preferred color */
-  color: var(--yt-white); /* Use your preferred text color */
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border-radius: 0 40px 40px 0;
-  cursor: pointer;
-}
-
-.search-container {
-  display: flex;
-  align-items: center;
-  
-}
-.upload-button{
-  background-color: var(--yt-red);
-  border-radius: 50%;
-  width: 40px;
-  height: 40px;
-  align-items: center;
-  justify-content: center;
-  margin-left: 20px;
-}
-.title {
-  color: var(--yt-white);
-  position: absolute;
-  left: 0;
-  height: 0;
-  margin-bottom: 20px;
+.main-content {
+  flex: 1;
 }
 /*Card*/
 /* Add this style to the container of your cards */
 .card-container {
   display: grid;
-  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr)); /* Adjust column size as needed */
-  gap: 30px; /* Adjust gap between cards as needed */
+  grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); /* Adjust column size as needed */
+  gap: 10px; /* Adjust gap between cards as needed */
 }
 
 .card {

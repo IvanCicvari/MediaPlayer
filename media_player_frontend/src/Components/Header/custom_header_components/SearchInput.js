@@ -1,6 +1,6 @@
 // SearchInput.js
 import React from 'react';
-import "../../style/MainCssFile.css";
+import "../../../style/Header and sidebar.css"
 
 const SearchInput = ({ placeholder, onChange }) => {
     return (
