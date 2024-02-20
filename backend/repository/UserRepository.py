@@ -22,7 +22,7 @@ class UserRepository:
         # Map each DALUser to a BLUser and return a tuple of BLUsers
         return tuple(BLUser(user_id=dal_user.user_id, username=dal_user.username) for dal_user in dal_users)
 
-def create_user(self, db: Session, first_name: str, last_name: str, username: str, email: str, password: str,
+    def create_user(self, db: Session, first_name: str, last_name: str, username: str, email: str, password: str,
                     profile_image: str = None, bio: str = None, is_verified: bool = False, 
                     subscription_status: str = None):
         # Create a new DALUser instance
@@ -54,3 +54,24 @@ def create_user(self, db: Session, first_name: str, last_name: str, username: st
 
         # If an error occurred, return None or raise an exception based on your application logic
         return None
+
+    def delete_user(self, db: Session, identifier: str, by_username: bool = True):
+        # Specify the condition based on whether you are deleting by username or user_id
+        condition = (DALUser.username == identifier) if by_username else (DALUser.user_id == identifier)
+
+        # Try to locate the user in the database based on the provided identifier
+        user_to_delete = db.uery(DALUser).filter(condition).first()
+
+        if user_to_delete:
+            try:
+                # Delete the user from the session and commit the transaction
+                db.delete(user_to_delete)
+                db.commit()
+                return True  # Return True to indicate successful deletion
+            except Exception as e:
+                # Handle the exception, log it, or raise a custom exception if needed
+                print(f"Error in delete_user: {e}")
+
+        # If user not found or an error occurred, return False or raise an exception based on your application logic
+        return False
+
