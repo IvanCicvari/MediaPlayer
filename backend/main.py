@@ -2,7 +2,7 @@ from fastapi import FastAPI, HTTPException, Depends
 from sqlalchemy.orm import Session
 from crud import *
 from PydanticModels import *
-from models import User, Video, LikesDislikes, View, Subscription
+from models import *
 from database import SessionLocal
 
 app = FastAPI()
