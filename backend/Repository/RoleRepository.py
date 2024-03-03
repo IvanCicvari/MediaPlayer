@@ -1,20 +1,20 @@
 from sqlalchemy.orm import Session
-import models
-from PydanticModels import RoleBase, Role
+from Models import RoleModel  # Replace 'Models' with the actual module name
+from PydanticModels import RoleBase
 
 def create_role(db: Session, role: RoleBase):
-    db_role = models.Role(**role.dict())
+    db_role = RoleModel(**role.dict())
     db.add(db_role)
     db.commit()
     db.refresh(db_role)
     return db_role
 
 def get_role(db: Session, role_id: int):
-    return db.query(models.Role).filter(models.Role.role_id == role_id).first()
+    return db.query(RoleModel).filter(RoleModel.role_id == role_id).first()
 
 def get_roles(db: Session, skip: int = 0, limit: int = 10):
-    return db.query(models.Role).offset(skip).limit(limit).all()
+    return db.query(RoleModel).offset(skip).limit(limit).all()
 
 def delete_role(db: Session, role_id: int):
-    db.query(models.Role).filter(models.Role.role_id == role_id).delete()
+    db.query(RoleModel).filter(RoleModel.role_id == role_id).delete()
     db.commit()

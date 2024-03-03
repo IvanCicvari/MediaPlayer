@@ -13,7 +13,6 @@ def get_db():
     finally:
         db.close()
 
-
 # CRUD operations for Users
 @user_router.post("/users/", tags=["Users"])
 def create_user_api(user: UserCreate, db: Session = Depends(get_db)):
@@ -39,3 +38,4 @@ def delete_user_api(user_id: int, db: Session = Depends(get_db)):
     if db_user is None:
         raise HTTPException(status_code=404, detail="User not found")
     return {"status": "User deleted successfully"}
+

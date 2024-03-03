@@ -3,7 +3,8 @@
 from typing import Optional, List
 from datetime import datetime
 from pydantic import BaseModel
-from pydanticModels import UserPydanticModel,VideoPydanticModel
+from UserPydanticModel import User
+from VideoPydanticModel import Video
 
 class ViewBase(BaseModel):
     user_id: int
